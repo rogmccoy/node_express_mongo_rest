@@ -5,8 +5,9 @@ const Book = require('../models/book')
 router.get('/', async (req, res) => {
     let books
     try {
-        books = await Book.find().sort({ createAt: 'desc' }).limit(10).exec()
+        books = await Book.find().sort({ createdAt: -1 }).limit(10).exec()
     } catch (error) {
+        console.log(error)        
         books = []
     }
     // render is passed a view
